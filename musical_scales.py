@@ -1,8 +1,8 @@
-#Define the maj_scale scale for sharp keys.
+#Define the chromatic scale for sharp keys.
 chromatic_sharp = ('A', 'A#', 'B', 'C', 'C#', 'D', 
                    'D#', 'E', 'F', 'F#', 'G', 'G#')
 
-#Define the maj_scale scale for flat keys.
+#Define the chromatic scale for flat keys.
 chromatic_flat = ('A', 'Bb', 'B', 'C', 'Db', 'D', 
                   'Eb', 'E', 'F', 'Gb', 'G', 'Ab')
 
@@ -18,20 +18,20 @@ print("What Major Scale would you like to spell?\n"
 start_note = input("Root: ")
 start_note = start_note.title()
 chord_functions = ['I', 'ii', 'iii', 'IV', 'V' , 'vi ', 'vii', 'I']
-
 maj_scale = []
+chromatic = []
 if 'b' in start_note or 'F' in start_note:
     index_of_start = chromatic_flat.index(start_note)
     for scale in chromatic_flat[index_of_start:] + chromatic_flat[ :index_of_start]:
-	    maj_scale.append(scale)
+	    chromatic.append(scale)
 else:
     index_of_start = chromatic_sharp.index(start_note)
     for scale in chromatic_sharp[index_of_start:] + chromatic_sharp[ :index_of_start]:
-        maj_scale.append(scale)
+        chromatic.append(scale)
 
    
 #Add the start note to the end to make an octave.
-maj_scale.append(start_note)
+chromatic.append(start_note)
 
 #print the function of the notes.
 for func in chord_functions:
@@ -41,19 +41,19 @@ print('\n')
 #print the root then the scale.
 print(start_note, end=' ')
 for x in major_scale_steps:
-	print(f"      {maj_scale[x]}", end=' ')
-	
+	print(f"      {chromatic[x]}", end=' ')
+	maj_scale.append(chromatic[x])
 	if x == 2:
-		maj_scale.pop(0)
-		maj_scale.pop(0)
+		chromatic.pop(0)
+		chromatic.pop(0)
 	else:
-		maj_scale.pop(0)
+		chromatic.pop(0)
+	
 		
 print()
 
 #Triads
 for x in maj_scale[::2]:
 	print(x)
-
 
 		
